@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Challenge 4</title>
+</head>
+<body>
+    {% extends 'hobbie/navbar.html' %}
+    
+    {% block content %}
+        <h1>My Projects</h1>
+        <ul>
+            {% for project in projects %}
+                <li>{{project}}</li>
+            {% endfor %}
+        </ul>
+    {% endblock %}
+</body>
+</html>

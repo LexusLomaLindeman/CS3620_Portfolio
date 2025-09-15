@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Challenge 4</title>
+</head>
+<body>
+    <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'hobbie' %}">Hobbie</a></li>
+        <li><a href="{% url 'project' %}">Project</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+    </ul>
+
+      {% block content %}
+    <!-- child templates insert content here -->
+    {% endblock %}
+</body>
+</html>
