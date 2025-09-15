@@ -1,0 +1,28 @@
+    {% extends 'hobbie/navbar.html' %}
+    {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+
+    {% block content %}
+
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+        <div class="row g-0 align-items-center">
+            <div class="col-md-8 px-4">
+            <h1 class="display-4 fst-italic">Form Coming Soon!</h1>
+            <p class="lead my-3">I currently dont have a form but feel free to contact me at my email!</p>
+            <a href= "mailto:lvillalobos@mail.weber.edu">lvillalobos@mail.weber.edu</a>
+            </div>
+                        <div class="col-md-4">
+                <img src="{% static 'image/Contact.jpg' %}"  id="headShot" class="img-fluid rounded-start" alt="Featured Image">
+            </div>
+
+        </div>
+    </div>
+        
+
+    {% endblock %}
+</body>
+</html>
