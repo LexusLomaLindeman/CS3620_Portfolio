@@ -7,20 +7,20 @@
 </head>
 <body>
 {% block content %}
-<h1>My Hobbies</h1>
+<h1>{{ cardSelected.name }}</h1>
 <div class="row">
-    {% for hobbie in hobbies %}
+
     <div class="col-md-4 mb-4">
         <div class="card" style="width: 18rem;">
-           <img class="card-img-top" src="{{ hobbie.image.url }}" alt="{{ hobbie.name }}">
+           <img class="card-img-top" src="{{ cardSelected.image.url }}" alt="{{ cardSelected.name }}">
             <div class="card-body">
-                <h5 class="card-title">{{ hobbie.name}}</h5>
-                <a href="{% url 'details' hobbie.id 'true' %}" class="btn btn-primary">Learn more</a>
+                <h5 class="card-title">{{ cardSelected.name}}</h5>
+                <p class="card-body">{{ cardSelected.description}}</p>
+                <button onclick="history.back()"class="btn btn-primary">Go Back</button>
             </div>
         </div>
     </div>
 
-    {% endfor %}
 </div>
 {% endblock %}
 </body>

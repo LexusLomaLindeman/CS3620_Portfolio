@@ -1,17 +1,27 @@
+    {% extends 'hobbie/navbar.html' %}
+        {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Challenge 4</title>
 </head>
 <body>
-    {% extends 'hobbie/navbar.html' %}
-    
-    {% block content %}
-        <h1>My Portfolio</h1>
-        <ul>
-            {% for project in projects %}
-                <li>{{project}}</li>
-            {% endfor %}
-        </ul>
-    {% endblock %}
+{% block content %}
+<h1>My Projects</h1>
+<div class="row">
+    {% for project in projects %}
+    <div class="col-md-4 mb-4">
+        <div class="card" style="width: 18rem;">
+           <img class="card-img-top" src="{{ project.image.url }}" alt="{{ project.name }}">
+            <div class="card-body">
+                <h5 class="card-title">{{project.name }}</h5>
+                <a href="{% url 'details' project.id 'false' %}" class="btn btn-primary">Learn more</a>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+{% endblock %}
 </body>
 </html>

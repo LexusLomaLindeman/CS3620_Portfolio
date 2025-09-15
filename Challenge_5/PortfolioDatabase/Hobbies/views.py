@@ -19,3 +19,18 @@ def project(request):
 
 def contact(request):
     return render(request, 'hobbie/contact.html')
+
+def details(request , id, isHobbie):
+    isHobbie = isHobbie.lower() == "true"
+
+    if isHobbie:
+        cardSelected = Hobbie.objects.get(id=id)
+    else:
+       cardSelected = Project.objects.get(id=id)
+     
+    context = {
+        "cardSelected": cardSelected,
+        "isHobbie": isHobbie
+    }
+
+    return render(request, 'hobbie/details.html',context)
