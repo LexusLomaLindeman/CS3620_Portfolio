@@ -1,0 +1,52 @@
+ body 
+ {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #343a40;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* centers the cards horizontally */
+            gap: 20px; /* space between cards */
+        }
+
+        .card {
+            width: 18rem; /* fixed width for consistency */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* subtle hover effect */
+        }
+
+        .card-img-top {
+            width: 100%;
+            height: 200px;
+            object-fit: cover; /* ensures the image fills the card nicely */
+        }
+
+        .card-body {
+            text-align: center; /* center text inside the card */
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
