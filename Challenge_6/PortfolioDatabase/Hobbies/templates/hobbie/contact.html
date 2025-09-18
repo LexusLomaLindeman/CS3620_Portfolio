@@ -1,0 +1,54 @@
+{% extends 'hobbie/navbar.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+
+    {% block content %}
+
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+        <div class="row g-0 align-items-center">
+            <div class="col-md-8 px-4">
+            <h1 class="display-4 fst-italic">Contact us!</h1>
+            
+       <form method="post">
+            {% csrf_token %}
+
+            <div class="form-group mb-3">
+                <label class="form-label">{{ form.firstName.label_tag }}</label>
+                 {{ form.firstName|add_class:"form-control" }}
+                {{ form.firstName.errors }}
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="form-label">{{ form.lastName.label_tag }}</label>
+                {{ form.lastName |add_class:"form-control"}}
+                {{ form.lastName.errors }}
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="form-label">{{ form.email.label_tag }}</label>
+                {{ form.email|add_class:"form-control" }}
+                {{ form.email.errors }}
+            </div>
+
+            <div class="form-group mb-3">
+                <label class="form-label">{{ form.message.label_tag }}</label>
+                {{ form.message|add_class:"form-control" }}
+                {{ form.message.errors }}
+            </div>
+
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        </div>
+    </div>
+        
+
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,48 @@
+{% extends 'hobbie/navbar.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+
+    {% block content %}
+
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+        <div class="row g-0 align-items-center">
+            <div class="col-md-8 px-4">
+            <h1 class="display-4 fst-italic">New Project</h1>
+            
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="form-group mb-3">
+                    <label class="form-label">{{ form.name.label_tag }}</label>
+                    {{ form.name|add_class:"form-control" }}
+                    {{ form.name.errors }}
+                </div>
+
+                <div class="form-group mb-3">
+                    <label class="form-label">{{ form.description.label_tag }}</label>
+                    {{ form.description|add_class:"form-control" }}
+                    {{ form.description.errors }}
+                </div>
+
+                 <div class="form-group mb-3">
+                    <label class="form-label">{{ form.image.label_tag }}</label>
+                    {{ form.image|add_class:"form-control" }}
+                    {{ form.image.errors }}
+                </div>
+     
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    </div>
+        
+
+    {% endblock %}
+</body>
+</html>

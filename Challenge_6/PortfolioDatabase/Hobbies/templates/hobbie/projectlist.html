@@ -1,0 +1,54 @@
+  {% extends 'hobbie/navbar.html' %}
+    {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+
+    {% block content %}
+
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+        <div class="row g-0 align-items-center">
+            <div class="col-md-8 px-4">
+            <h1 class="display-4 fst-italic">Current projects</h1>
+            <a href="{% url 'projectform' %}" class="btn btn-primary">Add New Project</a>
+            <div class="container mt-3">    
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                       
+                        {% for project in projects %}  
+                            <tr>
+                                <td>{{project.name }}</td>
+                                <td>{{project.description }}</td>
+                                <td>
+                                    <img class="w-25 h-25" src="{{ project.image.url }}" alt="{{ project.name }}">
+                                </td>
+                                <td>
+                                   <form method="post" action="{% url 'deleteProject' project.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

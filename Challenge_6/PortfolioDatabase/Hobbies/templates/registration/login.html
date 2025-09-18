@@ -1,0 +1,39 @@
+
+{% extends 'hobbie/navbar.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+
+    {% block content %}
+
+    <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+        <div class="row g-0 align-items-center">
+            <div class="col-md-8 px-4">
+            <h1 class="display-4 fst-italic">LogIn</h1>
+            
+       <form method="post">
+            {% csrf_token %}
+
+             <div class="form-group mb-3">
+                <label class="form-label">{{ form.username.label }}</label>
+                {{ form.username|add_class:"form-control" }}
+            </div>
+             <div class="form-group mb-3">
+                <label class="form-label">{{ form.password.label }}</label>
+                {{ form.password|add_class:"form-control" }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        </div>
+    </div>
+        
+
+    {% endblock %}
+</body>
+</html>

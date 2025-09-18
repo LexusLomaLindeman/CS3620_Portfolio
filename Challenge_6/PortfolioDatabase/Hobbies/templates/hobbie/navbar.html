@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Challenge 6</title>
+    <link rel="stylesheet" href="{% static 'css/navBar.css' %}">
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#">
+            <img class="logo" src="{% static 'image/Logo.png' %}" alt="Logo">
+        </a>
+
+        <!-- Navbar toggler for mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links and buttons -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'hobbie' %}">Hobbie</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'project' %}">Portfolio</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'projectlist' %}">Add Project</a></li>
+                {% endif %}
+            </ul>
+
+            <!-- Login/Logout button aligned left inside navbar -->
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'logout' %}" class="d-flex">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Log out</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-primary">Log in</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+    
+    {% block content %}
+    <!-- child templates insert content here -->
+    {% endblock %}
+    {% bootstrap_javascript %}
+</body>
+</html>
