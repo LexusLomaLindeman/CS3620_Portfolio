@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load django_bootstrap5 %}
+  {% bootstrap_css %}
+</head>
+<body>
+<div class="container mt-5 mb-5 d-flex justify-content-center">
+    <div class="card px-1 py-4">
+        <div class="card-body">
+            <h6 class="information mt-4">Fill Out The Needed Info to Create Your Madlib!</h6>
+            <form method="post" action="{% url 'storySelected' storySelected.storyName %}">
+
+                {% csrf_token %}
+            
+                {% for i in nounRange %}
+                    <div class="form-group mb-3">
+                        <label class="form-label">Noun {{ i|add:1 }}</label>
+                        <input type="text" class="form-control" id="noun{{i}}" name="noun{{i}}">
+                    </div>
+                {% endfor %}
+
+                {% for i in verbRang %}
+                    <div class="form-group mb-3">
+                        <label class="form-label">Verb {{ i|add:1 }}</label>
+                        <input type="text" class="form-control" id="verb{{i}}" name="verb{{i}}">
+                    </div>
+                {% endfor %}
+
+                {% for i in adjectiveRange %}
+                    <div class="form-group mb-3">
+                        <label class="form-label">Adjective {{ i|add:1 }}</label>
+                        <input type="text" class="form-control" id="adjective{{i}}" name="adjective{{i}}">
+                    </div>
+                {% endfor %}
+
+                {% for i in pronounsRange %}
+                    <div class="form-group mb-3">
+                        <label class="form-label">Pronouns {{ i|add:1 }}</label>
+                        <input type="text" class="form-control" id="pronouns{{i}}" name="pronouns{{i}}">
+                    </div>
+                {% endfor %}
+
+                {% for i in nameRange %}
+                    <div class="form-group mb-3">
+                        <label class="form-label">Name {{ i|add:1 }}</label>
+                        <input type="text" class="form-control" id="name{{i}}" name="name{{i}}">
+                    </div>  
+                {% endfor %}
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{% url 'home' %}" class="btn btn-primary">Back</a>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

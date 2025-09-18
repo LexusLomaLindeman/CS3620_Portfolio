@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load django_bootstrap5 %}
+  {% bootstrap_css %}
+</head>
+<body>
+
+  <div class="bg-dark py-5">
+     <div class="container px-5">
+       <div class="row gx-5 justify-content-center">
+          <div class="col-lg-6">
+            <div class="text-center my-5">
+              <h1 class="display-5 fw-bolder text-white mb-2">Welcome Choose a Madlib!</h1>
+               <p class="lead text-white-50 mb-4">A Mad Lib is a word game created by Leonard Stern and Roger Price, 
+               where players fill in the blanks in a story with their chosen words. 
+               The game typically involves one player prompting others for a list of words, 
+              which are then inserted into a pre-written story, often resulting in humorous 
+              and nonsensical narratives. Mad Libs are commonly played as a party game or a fun pastime.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5">
+  <div class="row g-4"> 
+    {% for story in storyInfo %}
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card mb-5 mb-xl-0">
+            <div class="card-body p-5">
+              <div class="small text-uppercase fw-bold text-muted">{{story.storyName}}</div>
+                {{story.description}}
+              <div class="d-grid"><a href="{% url 'form' story.id %}" class="btn btn-primary">Go to MadLib »</a></div>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+  </div>
+</div>
+</body>
+</html>
