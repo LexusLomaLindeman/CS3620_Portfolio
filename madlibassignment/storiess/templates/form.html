@@ -9,7 +9,7 @@
     <div class="card px-1 py-4">
         <div class="card-body">
             <h6 class="information mt-4">Fill Out The Needed Info to Create Your Madlib!</h6>
-            <form method="post" action="{% url 'storySelected' storySelected.storyName %}">
+            <form method="post" action="{% url 'storySelected' storySelected.id %}">
 
                 {% csrf_token %}
             

@@ -24,39 +24,61 @@ def form(request , id):
 
    return render(request, 'form.html',context)
 
-def storySelected(request,selectedStory):
+def storySelected(request,id):
+
+    selectedStory = StoryInfo.objects.get(id=id)
+
     if request.method == "POST":
         nouns = []
-        verb = []
-        adjective= []
+        verbs = []
+        adjectives= []
         pronouns = []
-        name =[]
+        names =[]
 
         for key, value in request.POST.items():
             if key.startswith("noun"):
                 nouns.append(value)
 
             if key.startswith("verb"):
-                verb.append(value)
+                verbs.append(value)
 
             if key.startswith("adjective"):
-                adjective.append(value)
+                adjectives.append(value)
 
             if key.startswith("pronouns"):
                pronouns.append(value)
 
             if key.startswith("name"):
-               name.append(value)
+               names.append(value)
+        
+        newStory = selectedStory.story
+
+        for i, verb in enumerate(verbs):
+            placeholder = f"[verb{i}]"
+            newStory = newStory.replace(placeholder, verb)
+        
+        for i, adjective in enumerate(adjectives):
+            placeholder = f"[adjective{i}]"
+            newStory = newStory.replace(placeholder, adjective)
+        
+        for i, noun in enumerate(nouns):
+            placeholder = f"[noun{i}]"
+            newStory = newStory.replace(placeholder, noun)
+
+        for i, pronoun in enumerate(pronouns):
+            placeholder = f"[pronoun{i}]"
+            newStory = newStory.replace(placeholder, pronoun)
+
+        for i, name in enumerate(names):
+            placeholder = f"[name{i}]"
+            newStory = newStory.replace(placeholder, name)
+  
 
         context = {
-            'nouns': nouns,
-            'verb': verb,
-            'adjective': adjective,
-            'pronouns': pronouns,
-            'name': name
+            'storyName':selectedStory.storyName,
+            'story': newStory,
         }
-        storySelected = f"{selectedStory}.html"
-        return render(request, storySelected, context)
+        return render(request, 'story.html',context)
 
     else:
         return redirect('index') 
